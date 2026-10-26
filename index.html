@@ -1,1 +1,108 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus Games</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0d14;
+  color: white;
+}
+header {
+  padding: 22px 7%;
+  background: #121522;
+  border-bottom: 1px solid #292d40;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { font-size: 25px; font-weight: bold; }
+.logo span { color: #a78bfa; }
+main { max-width: 1100px; margin: auto; padding: 35px 20px; }
+h1 { font-size: 34px; margin-bottom: 8px; }
+p { color: #a5acc0; }
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  background: #191d2b;
+  color: white;
+  border: 1px solid #34394e;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+.game {
+  background: #171b29;
+  border: 1px solid #292e42;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+.game:hover { transform: translateY(-4px); }
+.art {
+  height: 125px;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+}
+.game h3 { margin: 13px; }
+.game p { margin: 0 13px 15px; font-size: 13px; }
+footer { text-align: center; padding: 30px; color: #777f96; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NEXUS <span>GAMES</span></div>
+  <div>🎮 PLAY FREE</div>
+</header>
+<main>
+  <h1>Find Your Next Game</h1>
+  <p>Pick a game and start playing.</p>
+  <input id="search" placeholder="🔎 Search games..." oninput="filterGames()">
+  <div class="games" id="games">
+    <div class="game" data-name="slope">
+      <div class="art" style="background:linear-gradient(135deg,#123b32,#16a085)">🟢</div>
+      <h3>Slope</h3><p>Arcade · Running</p>
+    </div>
+    <div class="game" data-name="minecraft">
+      <div class="art" style="background:linear-gradient(135deg,#284b27,#659b43)">🌳</div>
+      <h3>Minecraft Classic</h3><p>Sandbox · Building</p>
+    </div>
+    <div class="game" data-name="2048">
+      <div class="art" style="background:linear-gradient(135deg,#6941a5,#a78bfa)">🔢</div>
+      <h3>2048</h3><p>Puzzle · Strategy</p>
+    </div>
+    <div class="game" data-name="snake">
+      <div class="art" style="background:linear-gradient(135deg,#16552c,#31a354)">🐍</div>
+      <h3>Snake</h3><p>Arcade · Classic</p>
+    </div>
+    <div class="game" data-name="racing">
+      <div class="art" style="background:linear-gradient(135deg,#713333,#ef4444)">🏎️</div>
+      <h3>Racing Games</h3><p>Racing · Driving</p>
+    </div>
+    <div class="game" data-name="basketball">
+      <div class="art" style="background:linear-gradient(135deg,#75451e,#e99a43)">🏀</div>
+      <h3>Basketball</h3><p>Sports · Skill</p>
+    </div>
+  </div>
+</main>
+<footer>Nexus Games · Built for players.</footer>
+<script>
+function filterGames() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.game').forEach(game => {
+    game.style.display = game.dataset.name.includes(q) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
